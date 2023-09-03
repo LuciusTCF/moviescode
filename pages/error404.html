@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="shortcut icon"
-      href="./assets/image__1_-removebg-preview2.png"
+      href="../assets/image__1_-removebg-preview2.png"
       type="image/png"
     />
     <title>MoviesCode</title>
@@ -15,19 +15,19 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
     <header class="fixed-top">
       <nav
-        class="navbar nav-underline bg-transparent navbar-expand-lg d-flex align-items-start"
+        class="navbar nav-underline bg-transparent navbar-expand-lg"
         data-bs-theme="dark"
       >
         <div class="container-fluid">
           <div class="mx-3">
-            <a class="navbar-footer-brand" href="#">
+            <a class="navbar-footer-brand" href="../index.html">
               <img
-                src="./assets/image__1_-removebg-preview.png"
+                src="../assets/image__1_-removebg-preview.png"
                 alt="Logo de MoviesCode"
               />
             </a>
@@ -46,7 +46,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="../index.html"
                   >Inicio</a
                 >
               </li>
@@ -61,7 +64,7 @@
                 >
               </li>
             </ul>
-            <div id="navStartingPage">
+            <div>
               <ul class="row me-3 my-2 justify-content-end align-items-center">
                 <li
                   class="d-flex col-5 justify-content-center nav-item mx-1 rounded-2 p-2 target"
@@ -75,9 +78,7 @@
                 <li
                   class="d-flex col-5 justify-content-center nav-item mx-1 rounded-2 bg-white border border-light p-2 target-2"
                 >
-                  <a
-                    class="nav-link text-black text-target"
-                    href="./pages/error404.html"
+                  <a class="nav-link text-black text-target" href="#"
                     >Registrarse</a
                   >
                 </li>
@@ -103,8 +104,21 @@
         </div>
       </nav>
     </header>
-    <main class="d-flex mt-5 pt-5">
-      <div id="list"></div>
+    <main
+      class="d-flex mt-5 pt-5 col container-fluid justify-content-center align-items-center"
+    >
+      <div class="row mt-5">
+        <div id="list" class="col mt-5">
+          <lottie-player
+            src="https://assets7.lottiefiles.com/packages/lf20_2pqrj2bi.json"
+            background="transparent"
+            speed="1"
+            style="width: 100%; height: 100%"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
+      </div>
     </main>
     <footer class="container-fluid bg-transparent">
       <hr />
@@ -118,16 +132,8 @@
           />
         </div>
         <div class="col-12 d-flex justify-content-center">
-          <a
-            class="text-decoration-none mx-3 text-white"
-            href="./pages/error404.html"
-            >Contacto</a
-          >
-          <a
-            class="text-decoration-none mx-3 text-white"
-            href="./pages/error404.html"
-            >Acerca de</a
-          >
+          <a class="text-decoration-none mx-3 text-white" href="#">Contacto</a>
+          <a class="text-decoration-none mx-3 text-white" href="#">Acerca de</a>
         </div>
         <div class="col-12 text-white text-center">
           <small>&copy;MoviesCode 2023. Derechos reservados.</small>
@@ -135,19 +141,19 @@
         <div
           class="col-12 text-white text-center d-flex justify-content-center"
         >
-          <a href="./pages/error404.html" aria-label="Instagram"
+          <a href="#" aria-label="Instagram"
             ><i
               class="fa fa-instagram fa-2x text-white mx-3"
               aria-hidden="true"
             ></i
           ></a>
-          <a href="./pages/error404.html" aria-label="Youtube"
+          <a href="#" aria-label="Youtube"
             ><i
               class="fa fa-youtube-play fa-2x text-white mx-3"
               aria-hidden="true"
             ></i
           ></a>
-          <a href="./pages/error404.html" aria-label="Twitch"
+          <a href="#" aria-label="Twitch"
             ><i
               class="fa fa-twitch fa-2x text-white mx-3"
               aria-hidden="true"
@@ -188,6 +194,6 @@
 
     <script src="https://use.fontawesome.com/c2813ccf5b.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script type="module" src="./js/app.js"></script>
+    <script type="module" src="../js/app.js"></script>
   </body>
 </html>

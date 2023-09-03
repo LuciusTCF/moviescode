@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+/* General */
+
 main {
   height: 78%;
 }
@@ -61,3 +63,5 @@ body {
   );
   height: 100vh;
 }
+
+/* Error404 */
