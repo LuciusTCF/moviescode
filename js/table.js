@@ -10,6 +10,7 @@ let movieName = document.querySelector("#input2");
 let category = document.querySelector("#input3");
 let description = document.querySelector("#input4");
 let published = document.querySelector("#input5");
+let movieImage = document.querySelector("#input6");
 let addMovieForm = document.querySelector("#addMovieForm");
 let tBody = document.querySelector("tbody");
 let movieUpdate = document.querySelector("#movieUpdate");
@@ -17,12 +18,13 @@ let content = document.querySelector("#main");
 let button = document.querySelector("#logOut");
 
 class Movie {
-  constructor(id, movieName, category, description, published) {
+  constructor(id, movieName, category, description, published, movieImage) {
     this.id = id;
     this.movieName = movieName;
     this.category = category;
     this.description = description;
     this.published = published;
+    this.movieImage = movieImage;
   }
 }
 
@@ -33,7 +35,8 @@ const saveMovie = (event) => {
     movieName.value,
     category.value,
     description.value,
-    published.value
+    published.value,
+    movieImage.value
   );
   movies.push(movie);
   localStorage.setItem("movies", JSON.stringify(movies));
@@ -82,6 +85,7 @@ const showModal2 = (index) => {
   document.querySelector("#inputModal3").value = movies[index].category;
   document.querySelector("#inputModal4").value = movies[index].description;
   document.querySelector("#inputModal5").value = movies[index].published;
+  document.querySelector("#inputModal6").value = movies[index].movieImage;
   movieIndex = index;
   myModal2.show();
 };
@@ -93,18 +97,20 @@ const updateMovie = (event) => {
   movies[movieIndex].category = document.querySelector("#inputModal3").value;
   movies[movieIndex].description = document.querySelector("#inputModal4").value;
   movies[movieIndex].published = document.querySelector("#inputModal5").value;
+  movies[movieIndex].movieImage = document.querySelector("#inputModal6").value;
   localStorage.setItem("movies", JSON.stringify(movies));
   myModal2.hide();
   loadTable();
 };
 
 class Highlight {
-  constructor(id, movieName, category, description, published) {
+  constructor(id, movieName, category, description, published, movieImage) {
     this.id = id;
     this.movieName = movieName;
     this.category = category;
     this.description = description;
     this.published = published;
+    this.movieImage = movieImage;
   }
 }
 
@@ -114,7 +120,8 @@ const highlightMovie = (index) => {
     movies[index].movieName,
     movies[index].category,
     movies[index].description,
-    movies[index].published
+    movies[index].published,
+    movies[index].movieImage
   );
   highlights.splice(0);
   highlights.push(highlight);
