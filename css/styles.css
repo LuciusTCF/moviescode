@@ -2,12 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
 
 /* General */
 
 main {
-  height: 78%;
+  min-height: 78%;
 }
 
 .navbar-footer-brand img {
@@ -64,4 +65,19 @@ body {
   height: 100vh;
 }
 
+.user-avatar {
+  width: 30px;
+  border-radius: 50%;
+}
+
 /* Error404 */
+
+/*Table*/
+
+#buttonModal1 {
+  width: 200px;
+}
+
+#sectionStart {
+  min-width: 250px;
+}
