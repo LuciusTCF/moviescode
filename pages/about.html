@@ -24,7 +24,7 @@
   <body>
     <header class="fixed-top">
       <nav
-        class="navbar nav-underline bg-transparent navbar-expand-lg d-flex align-items-start"
+        class="navbar nav-underline bg-black navbar-expand-lg d-flex align-items-start"
         data-bs-theme="dark"
       >
         <div class="container-fluid">
@@ -48,24 +48,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../index.html"
-                  >Inicio</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#"
-                  data-bs-toggle="modal"
-                  data-bs-target="#categories"
-                  >Categorías</a
-                >
-              </li>
-            </ul>
-            <div id="navStartingPage">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <div id="navStartingPage" class="d-flex justify-content-center">
               <ul
                 id="sectionStart"
                 class="row me-3 my-2 justify-content-end align-items-center"
@@ -88,9 +72,9 @@
                 </li>
               </ul>
             </div>
-            <form class="d-flex">
+            <div class="d-flex">
               <button
-                class="btn btn-outline-info offcanvas"
+                class="btn btn-outline-info offcanvas sticky-top"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasSearch"
@@ -99,12 +83,133 @@
               >
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </nav>
     </header>
-    <main></main>
+    <main
+      class="col container-fluid justify-content-center align-items-center pt-5 min-vh-100"
+    >
+      <div class="row justify-content-center mt-5 mx-md-5">
+        <section class="border bg-body-secondary px-5 py-3 my-5">
+          <h1 class="text-black">Acerca de nosotros</h1>
+          <p class="text-black">
+            Bienvenido a Movies Code - Tu Destino Cinematográfico en Línea
+            Descubre el fascinante mundo del cine en una sola plataforma: Movies
+            Code. Aquí, nuestra misión es brindarte una experiencia
+            cinematográfica excepcional, donde podrás explorar una amplia
+            variedad de películas de todos los géneros, décadas y rincones del
+            mundo. Lo que ofrecemos:
+            <br />
+            <br />
+            🍿 Extensa Biblioteca Cinematográfica: Nuestra colección incluye
+            desde los éxitos más recientes de Hollywood hasta joyas del cine
+            independiente y clásicos atemporales. ¡Hay algo para todos los
+            gustos y estados de ánimo!
+            <br />
+            🎥 Streaming y Descarga: Disfruta de la flexibilidad de ver tus
+            películas favoritas en línea o descargarlas para verlas sin
+            conexión, siempre que lo desees. La elección es tuya.
+            <br />
+            📜 Información Detallada: Conoce más sobre cada película con
+            nuestras descripciones detalladas, listas de actores y equipos de
+            producción, puntuaciones de críticos y reseñas de la comunidad.
+            <br />
+            🔍 Navegación Sencilla: Encuentra fácilmente lo que buscas a través
+            de nuestro sistema de búsqueda avanzada, categorías por género, y
+            recomendaciones personalizadas basadas en tus preferencias de
+            visualización.
+            <br />
+            🌟 Funciones de Usuario: Crea tus listas de reproducción
+            personalizadas, califica y comenta películas, y comparte tus
+            opiniones con una comunidad apasionada de amantes del cine.
+            <br />
+            📱 Multiplataforma: Disfruta de Movies Code en cualquier
+            dispositivo: computadoras de escritorio, tabletas o teléfonos
+            móviles. Lleva tus películas favoritas contigo dondequiera que
+            vayas.
+            <br />
+            <br />
+            Legalidad y Respeto por los Derechos de Autor: En Movies Code,
+            operamos dentro de los límites legales y respetamos los derechos de
+            autor de todas las películas que ofrecemos. Nos esforzamos por
+            proporcionar una experiencia cinematográfica ética y responsable.
+            ¡Únete a la comunidad de cinéfilos apasionados en Movies Code y
+            comienza tu viaje cinematográfico hoy mismo! Descubre nuevas
+            películas, revive viejos clásicos y experimenta la magia del cine
+            como nunca antes. No importa si eres un amante del drama, la acción,
+            la comedia, la ciencia ficción o el romance, en Movies Code,
+            encontrarás una película que te atrapará. ¡Prepárate para disfrutar
+            de horas interminables de entretenimiento cinematográfico de alta
+            calidad! ¡Regístrate ahora y sumérgete en el mundo del cine en
+            Movies Code!
+            <br />
+            <br />
+            Atentamente,
+            <br />
+            Movies Code.
+          </p>
+        </section>
+        <section
+          class="row justify-content-center align-items-center"
+          id="tarjetas"
+        >
+          <div class="row vw-100 justify-content-center">
+            <h2 class="my-5 text-center text-white">Miembros</h2>
+            <div
+              class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-5 justify-content-center mb-5"
+            >
+              <div class="col d-flex justify-content-center">
+                <div
+                  id="card"
+                  class="card h-100 text-center border-0 people-card bg-black"
+                >
+                  <img
+                    src="/assets/WhatsApp Image 2023-06-19 at 11.11.27.jpeg"
+                    class="m-1"
+                    alt="Juan Anzorena"
+                  />
+                  <h4 class="card-title text-white">Juan Anzorena</h4>
+                  <p class="card-text">22 años</p>
+                  <p class="card-text">Egresado 2018</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center">
+                <div
+                  id="card"
+                  class="card h-100 text-center border-0 people-card bg-black"
+                >
+                  <img
+                    src="/assets/imagenmaxi2.jpg"
+                    class="m-1"
+                    alt="Maximo Villalba"
+                  />
+                  <h4 class="card-title text-white">Maximo Villalba</h4>
+                  <p class="card-text">18 años</p>
+                  <p class="card-text">Egresado 2022</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center">
+                <div
+                  id="card"
+                  class="card h-100 text-center border-0 people-card bg-black"
+                >
+                  <img
+                    src="/assets/WhatsApp Image 2023-06-13 at 20.39.34.jpeg"
+                    class="m-1"
+                    alt="Lucas Chocobar"
+                  />
+                  <h4 class="card-title text-white">Lucas Chocobar</h4>
+                  <p class="card-text">20 años</p>
+                  <p class="card-text">Egresado 2020</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
     <footer class="container-fluid bg-transparent">
       <hr />
       <div
@@ -151,29 +256,17 @@
         </div>
         <div class="col-12 text-white text-center">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis illum
-            doloribus, eius ipsum voluptatum impedit enim deleniti, corrupti
-            inventore dicta eligendi iste accusantium voluptatibus deserunt hic
-            ipsam placeat ratione. Quaerat.
+            MoviesCode es tu destino definitivo para disfrutar del séptimo arte.
+            Explora una amplia variedad de películas, desde clásicos atemporales
+            hasta los últimos estrenos. Nuestra pasión es compartir historias a
+            través del cine, y estamos encantados de acompañarte en este
+            emocionante viaje cinematográfico. Descubre, disfruta y comparte la
+            magia del cine en MoviesCode.
           </p>
         </div>
       </div>
     </footer>
-    <div
-      class="modal fade"
-      id="categories"
-      tabindex="-1"
-      aria-labelledby="ModalLabel1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-        <div class="modal-content text-white bg-transparent border-0">
-          <div class="d-flex justify-content-center fs-1">Lista</div>
-          <div class="d-flex justify-content-center fs-1">Acción</div>
-          <div class="d-flex justify-content-center fs-1">Suspenso</div>
-        </div>
-      </div>
-    </div>
+
     <div
       class="offcanvas offcanvas-start bg-black"
       tabindex="-1"

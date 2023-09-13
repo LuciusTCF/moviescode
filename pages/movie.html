@@ -24,7 +24,7 @@
   <body>
     <header class="fixed-top">
       <nav
-        class="navbar nav-underline bg-transparent navbar-expand-lg d-flex align-items-start"
+        class="navbar nav-underline bg-black navbar-expand-lg d-flex align-items-start"
         data-bs-theme="dark"
       >
         <div class="container-fluid">
@@ -48,24 +48,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../index.html"
-                  >Inicio</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#"
-                  data-bs-toggle="modal"
-                  data-bs-target="#categories"
-                  >Categorías</a
-                >
-              </li>
-            </ul>
-            <div id="navStartingPage">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <div id="navStartingPage" class="d-flex justify-content-center">
               <ul
                 id="sectionStart"
                 class="row me-3 my-2 justify-content-end align-items-center"
@@ -88,9 +72,9 @@
                 </li>
               </ul>
             </div>
-            <form class="d-flex">
+            <div class="d-flex">
               <button
-                class="btn btn-outline-info offcanvas"
+                class="btn btn-outline-info offcanvas sticky-top"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasSearch"
@@ -99,27 +83,36 @@
               >
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </nav>
     </header>
-    <main>
+    <main class="mt-5 pt-5 container-fluid d-flex justify-content-center">
       <div class="container-fluid">
-        <div class="row col-12">
-          <div class="card" style="width: 18rem; text-align: center">
-            <img src="..." class="cardImg" alt="Imagen" />
-            <div class="card-body">
-              <h5 class="cardNombre">Titulo</h5>
-              <p class="cardSinopsis">Sinopsis</p>
-            </div>
-            <div class="list-group list-group-flush">
-              <div class="cardRecaudacion">Recaudacion</div>
-              <div class="cardDirector">Director</div>
-              <div class="list-group-item">A third item</div>
-            </div>
-            <div class="card-body">
-              <a href="#" class="cardTrailer">Card link</a>
+        <div class="row">
+          <div class="col">
+            <h1 id="title"></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="d-flex row justify-content-center">
+              <iframe
+                id="iframe"
+                src=""
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+
+              <div class="mt-3">
+                <h3>Fecha de estreno</h3>
+                <p id="published"></p>
+                <h3>Sinópsis</h3>
+                <p id="description"></p>
+              </div>
             </div>
           </div>
         </div>
@@ -172,29 +165,17 @@
         </div>
         <div class="col-12 text-white text-center">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis illum
-            doloribus, eius ipsum voluptatum impedit enim deleniti, corrupti
-            inventore dicta eligendi iste accusantium voluptatibus deserunt hic
-            ipsam placeat ratione. Quaerat.
+            MoviesCode es tu destino definitivo para disfrutar del séptimo arte.
+            Explora una amplia variedad de películas, desde clásicos atemporales
+            hasta los últimos estrenos. Nuestra pasión es compartir historias a
+            través del cine, y estamos encantados de acompañarte en este
+            emocionante viaje cinematográfico. Descubre, disfruta y comparte la
+            magia del cine en MoviesCode.
           </p>
         </div>
       </div>
     </footer>
-    <div
-      class="modal fade"
-      id="categories"
-      tabindex="-1"
-      aria-labelledby="ModalLabel1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-        <div class="modal-content text-white bg-transparent border-0">
-          <div class="d-flex justify-content-center fs-1">Lista</div>
-          <div class="d-flex justify-content-center fs-1">Acción</div>
-          <div class="d-flex justify-content-center fs-1">Suspenso</div>
-        </div>
-      </div>
-    </div>
+
     <div
       class="offcanvas offcanvas-start bg-black"
       tabindex="-1"
@@ -244,24 +225,7 @@
 
     <script src="https://use.fontawesome.com/c2813ccf5b.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="../js/movie.js" type="module"></script>
-    <script type="module" src="../js/app.js"></script>
+    <script src="../js/movie.js"></script>
+    <script src="../js/app.js"></script>
   </body>
 </html>
-
-<!--<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>-->

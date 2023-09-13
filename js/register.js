@@ -1,48 +1,39 @@
 const users = JSON.parse(localStorage.getItem("users")) || [];
 
-// let nombre = document.querySelector("#input1");
 let emailReg = document.querySelector("#emailReg");
 let usernameReg = document.querySelector("#userReg");
 let passwordReg = document.querySelector("#passwordReg");
-let countryReg = document.querySelector("#countryReg");
+let passwordConfirm = document.querySelector("#passwordConfirm");
 let profileReg = document.querySelector("#profileReg");
 let passConfirm1 = document.querySelector("#passwordReg");
 let passConfirm2 = document.querySelector("#passwordConfirm");
 let messageConfirm2 = document.querySelector("#message");
 
 class User {
-  constructor(
-    // nombre,
-    emailReg,
-    usernameReg,
-    passwordReg,
-    countryReg = "",
-    profileReg
-  ) {
-    // this.nombre = nombre;
+  constructor(emailReg, usernameReg, passwordReg, profileReg) {
     this.emailReg = emailReg;
     this.usernameReg = usernameReg;
     this.passwordReg = passwordReg;
-    this.countryReg = countryReg;
     this.profileReg = profileReg;
   }
 }
 
 const registerUser = (event) => {
   event.preventDefault();
-  const user = new User(
-    // nombre.value,
-    emailReg.value,
-    usernameReg.value,
-    passwordReg.value,
-    countryReg.value,
-    profileReg.value
-  );
-  localStorage.removeItem("auth");
-  users.splice(0);
-  users.push(user);
-  localStorage.setItem("users", JSON.stringify(users));
-  location.assign("http://127.0.0.1:5502/index.html");
+  if (passConfirm1.value == passConfirm2.value) {
+    const user = new User(
+      emailReg.value,
+      usernameReg.value,
+      passwordReg.value,
+      profileReg.value
+    );
+    localStorage.removeItem("auth");
+    users.splice(0);
+    users.push(user);
+    sendMail();
+    localStorage.setItem("users", JSON.stringify(users));
+    location.assign("http://127.0.0.1:5502/index.html");
+  }
 };
 
 const check = () => {
@@ -67,11 +58,11 @@ const logIn = (event) => {
   event.preventDefault();
 
   let emailLog = document.querySelector("#emailLog").value;
-  let PasswordLog = document.querySelector("#passwordLog").value;
+  let passwordLog = document.querySelector("#passwordLog").value;
 
   if (
     emailLog == userAdmin.emailAdmin &&
-    PasswordLog == userAdmin.passwordAdmin
+    passwordLog == userAdmin.passwordAdmin
   ) {
     localStorage.removeItem("users");
     localStorage.setItem(
@@ -83,16 +74,26 @@ const logIn = (event) => {
       })
     );
 
-    location.replace("/pages/table.html");
+    location.replace("/pages/admin.html");
   } else if (
     emailLog == users[0].emailReg &&
-    PasswordLog == users[0].passwordReg
+    passwordLog == users[0].passwordReg
   ) {
     localStorage.removeItem("auth");
-    location.replace("http://127.0.0.1:5502/index.html");
+    location.replace("/pages/user.html");
   } else {
     alert("El correo o la contraseña no son correctos");
   }
 };
 
-// export { users };
+const sendMail = () => {
+  Email.send({
+    Host: "smtp.elasticemail.com",
+    Username: "lucaschcobarferreyra@gmail.com",
+    Password: "BCB1933977393C8B3360A50698B1D118FEB9",
+    To: emailReg.value,
+    From: "lucaschcobarferreyra@gmail.com",
+    Subject: "Gracias por registrarte",
+    Body: "Estamos contentos de que formes parte de nuestra comunidad.",
+  }).then((message = "Se ha registrado su cuenta") => alert(message));
+};

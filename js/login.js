@@ -25,7 +25,7 @@ const logIn = (event) => {
       })
     );
 
-    location.replace("/pages/table.html");
+    location.replace("/pages/admin.html");
   } else if (
     emailLog == users[0].emailReg &&
     PasswordLog == users[0].passwordReg
@@ -35,16 +35,3 @@ const logIn = (event) => {
     alert("El correo o la contraseña no son correctos");
   }
 };
-
-// const mostrarContenido = () => {
-//   console.log(document.querySelector("#correo").value);
-// };
-
-// document.querySelector("#correo").addEventListener("blur", mostrarContenido);
-// document
-//   .querySelector("#correo")
-//   .addEventListener("focus", () => console.log("Hiciste foco"));
-
-// document.querySelector("form").addEventListener("submit", () => {
-//   logIn(event);
-// });

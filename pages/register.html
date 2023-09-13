@@ -12,6 +12,7 @@
       href="../assets/image__1_-removebg-preview2.png"
       type="image/png"
     />
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <title>MoviesCode</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -24,7 +25,7 @@
   <body>
     <header class="fixed-top">
       <nav
-        class="navbar nav-underline bg-transparent navbar-expand-lg d-flex align-items-start"
+        class="navbar nav-underline bg-black navbar-expand-lg d-flex align-items-start"
         data-bs-theme="dark"
       >
         <div class="container-fluid">
@@ -48,24 +49,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../index.html"
-                  >Inicio</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#"
-                  data-bs-toggle="modal"
-                  data-bs-target="#categories"
-                  >Categorías</a
-                >
-              </li>
-            </ul>
-            <div id="navStartingPage">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <div id="navStartingPage" class="d-flex justify-content-center">
               <ul class="row me-3 my-2 justify-content-end align-items-center">
                 <li
                   class="d-flex col-5 justify-content-center nav-item mx-1 rounded-2 p-2 target"
@@ -83,9 +68,9 @@
                 </li>
               </ul>
             </div>
-            <form class="d-flex">
+            <div class="d-flex">
               <button
-                class="btn btn-outline-info offcanvas"
+                class="btn btn-outline-info offcanvas sticky-top"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasSearch"
@@ -94,7 +79,7 @@
               >
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </nav>
@@ -108,18 +93,6 @@
           novalidate
           onsubmit="registerUser(event)"
         >
-          <!-- <div class="mb-3">
-            <label for="nombreReg" class="form-label">Nombre y apellido:</label>
-            <div class="input-group">
-              <input
-                type="text"
-                aria-label="First name"
-                class="form-control"
-                id="nombreReg"
-              />
-              <input type="text" aria-label="Last name" class="form-control" />
-            </div>
-          </div> -->
           <div class="mb-3">
             <label for="emailReg" class="form-label text-black"
               >Correo electrónico:</label
@@ -128,21 +101,34 @@
               type="email"
               class="form-control"
               id="emailReg"
-              aria-describedby="emailHelp"
+              pattern=".{8,50}"
+              aria-describedby="emailRegist"
             />
-            <div id="emailHelp" class="form-text text-black">
+            <div id="emailRegist" class="form-text text-black">
               Nunca compartiremos tu email con nadie.
             </div>
           </div>
           <div class="mb-3">
             <label for="userReg" class="form-label text-black">Usuario:</label>
-            <input type="text" class="form-control" id="userReg" />
+            <input
+              type="text"
+              class="form-control"
+              id="userReg"
+              pattern=".{1,50}"
+              required
+            />
           </div>
           <div class="mb-3">
             <label for="passwordReg" class="form-label text-black"
               >Contraseña:</label
             >
-            <input type="password" class="form-control" id="passwordReg" />
+            <input
+              type="password"
+              class="form-control"
+              id="passwordReg"
+              pattern=".{8,30}"
+              required
+            />
             <div class="col-auto">
               <span id="passwordHelpInline" class="form-text text-black">
                 Debe contener al menos una letra mayúscula. Debe tener al menos
@@ -158,34 +144,26 @@
               type="password"
               class="form-control"
               id="passwordConfirm"
+              pattern=".{8,30}"
+              required
               onkeyup="check()"
             />
             <span id="message"></span>
           </div>
+
           <div class="mb-3">
-            <label for="countryReg" class="form-label text-black"
-              >País de origen:</label
-            >
-            <br />
-            <select
-              class="form-select"
-              aria-label="Default select example"
-              id="countryReg"
-            >
-              <option selected>Elige de la lista</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="profileReg" class="form-label"
+            <label for="profileReg" class="form-label text-black"
               >Elija su imagen de perfil</label
             >
             <input class="form-control" type="text" id="profileReg" />
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="check1Reg" />
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="check1Reg"
+              required
+            />
             <label class="form-check-label text-black" for="check1Reg"
               >Acepto los términos y condiciones.</label
             >
@@ -247,30 +225,11 @@
           ></a>
         </div>
         <div class="col-12 text-white text-center">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis illum
-            doloribus, eius ipsum voluptatum impedit enim deleniti, corrupti
-            inventore dicta eligendi iste accusantium voluptatibus deserunt hic
-            ipsam placeat ratione. Quaerat.
-          </p>
+          <p></p>
         </div>
       </div>
     </footer>
-    <div
-      class="modal fade"
-      id="categories"
-      tabindex="-1"
-      aria-labelledby="ModalLabel1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-        <div class="modal-content text-white bg-transparent border-0">
-          <div class="d-flex justify-content-center fs-1">Lista</div>
-          <div class="d-flex justify-content-center fs-1">Acción</div>
-          <div class="d-flex justify-content-center fs-1">Suspenso</div>
-        </div>
-      </div>
-    </div>
+
     <div
       class="offcanvas offcanvas-start bg-black"
       tabindex="-1"
@@ -320,8 +279,6 @@
 
     <script src="https://use.fontawesome.com/c2813ccf5b.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <!-- <script type="module" src="../js/register.js"></script>
-      <script type="module" src="../js/app.js"></script> -->
     <script src="../js/register.js"></script>
     <script src="../js/app.js"></script>
   </body>
