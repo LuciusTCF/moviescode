@@ -1,6 +1,8 @@
-const movies = JSON.parse(localStorage.getItem("movies"));
-const highlights = JSON.parse(localStorage.getItem("highlights"));
-const wishlists = JSON.parse(localStorage.getItem("wishlists"));
+// let movies = JSON.parse(localStorage.getItem("movies"));
+// let highlights = JSON.parse(localStorage.getItem("highlights"));
+// let wishlists = JSON.parse(localStorage.getItem("wishlists"));
+import { movies } from "./data.js";
+
 let position = location.search.split("?v=")[1];
 
 document.querySelector("#title").innerText = movies[position].movieName;

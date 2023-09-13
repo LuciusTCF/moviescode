@@ -1,7 +1,10 @@
-const users = JSON.parse(localStorage.getItem("users")) || null;
+// let users = JSON.parse(localStorage.getItem("users"));
+import { users } from "./data.js";
+
 let content2 = document.querySelector("#main2");
 let button2 = document.querySelector("#logOut2");
 let profilePageName = document.querySelector("#profilePageName");
+let profilePageImg = document.querySelector("#profilePageImg");
 
 if (!users) {
   button2.classList = "d-none";
@@ -15,13 +18,15 @@ if (!users) {
 
 const closeSession2 = () => {
   localStorage.removeItem("users");
-  location.replace("/");
+  location.replace("index.html");
 };
 
 const profileMain = () => {
-  if (users) {
-    profilePageName.innerText = users[0].usernameReg;
-  }
+  // if (users !== null) {
+  profilePageName.innerText = users[0].usernameReg;
+  profilePageImg.src = users[0].profileReg;
+  profilePageImg.alt = users[0].usernameReg;
+  // }
 };
 
 button2.addEventListener("click", closeSession2);

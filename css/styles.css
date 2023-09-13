@@ -340,4 +340,14 @@ body {
   height: 50vw;
 }
 
-/*Admin*/
+/*User*/
+
+#profilePageDiv {
+  width: 20vw;
+  height: 18vh;
+}
+
+#profilePageImg {
+  width: 100%;
+  height: 100%;
+}

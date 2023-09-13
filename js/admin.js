@@ -1,10 +1,11 @@
-const movies = JSON.parse(localStorage.getItem("movies")) || null;
-const highlights = JSON.parse(localStorage.getItem("highlights")) || null;
-const auth = JSON.parse(localStorage.getItem("auth")) || null;
+// let movies = JSON.parse(localStorage.getItem("movies")) || null;
+// let highlights = JSON.parse(localStorage.getItem("highlights")) || null;
+// let auth = JSON.parse(localStorage.getItem("auth")) || null;
+import { movies, highlights, auth } from "./data.js";
+import { Movie, Highlight } from "./class.js";
 
 const buttonModal1 = document.querySelector("#buttonModal1");
 const myModal1 = new bootstrap.Modal(document.querySelector("#addMovieModal"));
-
 let id = document.querySelector("#input1");
 let movieName = document.querySelector("#input2");
 let category = document.querySelector("#input3");
@@ -18,25 +19,44 @@ let movieUpdate = document.querySelector("#movieUpdate");
 let content = document.querySelector("#main");
 let button = document.querySelector("#logOut");
 
-class Movie {
-  constructor(
-    id,
-    movieName,
-    category,
-    description,
-    published,
-    movieImage,
-    movieVideo
-  ) {
-    this.id = id;
-    this.movieName = movieName;
-    this.category = category;
-    this.description = description;
-    this.published = published;
-    this.movieImage = movieImage;
-    this.movieVideo = movieVideo;
-  }
-}
+// class Movie {
+//   constructor(
+//     id,
+//     movieName,
+//     category,
+//     description,
+//     published,
+//     movieImage,
+//     movieVideo
+//   ) {
+//     this.id = id;
+//     this.movieName = movieName;
+//     this.category = category;
+//     this.description = description;
+//     this.published = published;
+//     this.movieImage = movieImage;
+//     this.movieVideo = movieVideo;
+//   }
+// }
+// class Highlight {
+//   constructor(
+//     id,
+//     movieName,
+//     category,
+//     description,
+//     published,
+//     movieImage,
+//     movieVideo
+//   ) {
+//     this.id = id;
+//     this.movieName = movieName;
+//     this.category = category;
+//     this.description = description;
+//     this.published = published;
+//     this.movieImage = movieImage;
+//     this.movieVideo = movieVideo;
+//   }
+// }
 
 const saveMovie = (event) => {
   event.preventDefault();
@@ -75,7 +95,7 @@ const loadTable = () => {
   });
 };
 
-const deleteMovie = (index) => {
+window.deleteMovie = (index) => {
   let confirmation = confirm(
     `Esta seguro que quiere eliminar a ${movies[index].movieName}`
   );
@@ -90,7 +110,7 @@ const deleteMovie = (index) => {
 let movieIndex = null;
 const myModal2 = new bootstrap.Modal(document.querySelector("#updateModal"));
 
-const showModal2 = (index) => {
+window.showModal2 = (index) => {
   document.querySelector("#inputModal1").value = movies[index].id;
   document.querySelector("#inputModal2").value = movies[index].movieName;
   document.querySelector("#inputModal3").value = movies[index].category;
@@ -116,27 +136,7 @@ const updateMovie = (event) => {
   loadTable();
 };
 
-class Highlight {
-  constructor(
-    id,
-    movieName,
-    category,
-    description,
-    published,
-    movieImage,
-    movieVideo
-  ) {
-    this.id = id;
-    this.movieName = movieName;
-    this.category = category;
-    this.description = description;
-    this.published = published;
-    this.movieImage = movieImage;
-    this.movieVideo = movieVideo;
-  }
-}
-
-const highlightMovie = (index) => {
+window.highlightMovie = (index) => {
   const highlight = new Highlight(
     movies[index].id,
     movies[index].movieName,
@@ -152,7 +152,7 @@ const highlightMovie = (index) => {
   loadTable();
 };
 
-const highlightCell = (index) => {
+window.highlightCell = (index) => {
   const buttonHighlight = document.querySelector(`.buttonHighlight-${index}`);
   const rowHighlights = document.querySelectorAll(`.td${index}`);
   buttonHighlight.classList = `btn btn-dark buttonHighlight-${index} buttonUnhighlight`;
@@ -160,18 +160,6 @@ const highlightCell = (index) => {
     cell.classList.add("bg-warning", "tdUnhighlight");
   }
 };
-
-buttonModal1.addEventListener("click", () => {
-  myModal1.show();
-});
-addMovieForm.addEventListener("submit", () => {
-  saveMovie(event);
-});
-if (movieUpdate) {
-  movieUpdate.addEventListener("submit", () => {
-    updateMovie(event);
-  });
-}
 
 if (!auth) {
   button.classList = "d-none";
@@ -190,5 +178,17 @@ const closeSession = () => {
 };
 
 button.addEventListener("click", closeSession);
+
+buttonModal1.addEventListener("click", () => {
+  myModal1.show();
+});
+addMovieForm.addEventListener("submit", () => {
+  saveMovie(event);
+});
+if (movieUpdate) {
+  movieUpdate.addEventListener("submit", () => {
+    updateMovie(event);
+  });
+}
 
 loadTable();

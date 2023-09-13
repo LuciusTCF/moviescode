@@ -1,9 +1,39 @@
-const users = JSON.parse(localStorage.getItem("users")) || null;
-const movies = JSON.parse(localStorage.getItem("movies")) || null;
+// let users = JSON.parse(localStorage.getItem("users")) || null;
+// let movies = JSON.parse(localStorage.getItem("movies")) || null;
+// let auth = JSON.parse(localStorage.getItem("auth")) || null;
+// let highlights = JSON.parse(localStorage.getItem("highlights"));
+// let wishlists = JSON.parse(localStorage.getItem("wishlists"));
+
+import { users, movies, auth, highlights, wishlists } from "./data.js";
+import { Wishlist } from "./class.js";
 
 let searchInput = document.querySelector("#search");
 let listContainer = document.querySelector("#list");
 let bodyIndex = document.querySelector("#body-index");
+let sectionStart = document.querySelector("#sectionStart");
+let highlightDiv = document.querySelector("#highlightDiv");
+let wishlistContainer = document.querySelector("#wishlistContainer");
+let categories = document.querySelector("#categories");
+
+// class Wishlist {
+//   constructor(
+//     id,
+//     movieName,
+//     category,
+//     description,
+//     published,
+//     movieImage,
+//     movieVideo
+//   ) {
+//     this.id = id;
+//     this.movieName = movieName;
+//     this.category = category;
+//     this.description = description;
+//     this.published = published;
+//     this.movieImage = movieImage;
+//     this.movieVideo = movieVideo;
+//   }
+// }
 
 const search = (event) => {
   event.preventDefault();
@@ -41,12 +71,11 @@ const search = (event) => {
 
 searchInput.addEventListener("keyup", search);
 
-let sectionStart = document.querySelector("#sectionStart");
-const auth = JSON.parse(localStorage.getItem("auth")) || null;
-
 if (auth) {
-  sectionStart.innerHTML = "";
-  sectionStart.classList = "row me-3 mb-0";
+  if (sectionStart) {
+    sectionStart.innerHTML = "";
+    sectionStart.classList = "row me-3 mb-0";
+  }
 
   let usernameP = document.createElement("p");
   let usernameText = `${auth.user}`;
@@ -97,9 +126,6 @@ if (auth) {
 } else {
 }
 
-const highlights = JSON.parse(localStorage.getItem("highlights"));
-let highlightDiv = document.querySelector("#highlightDiv");
-
 const highlightIndex = () => {
   let divContent = document.createElement("div");
   divContent.classList = "slide-content";
@@ -126,13 +152,6 @@ const highlightIndex = () => {
   }
 };
 
-// d-flex row align-items-start
-// movie-title  m-0 p-0 ps-3
-//    movie-des m-0 p-0 ps-3
-
-const wishlists = JSON.parse(localStorage.getItem("wishlists"));
-
-let wishlistContainer = document.querySelector("#wishlistContainer");
 let pageRedirection = "";
 let pageImage = "";
 let preImage = "";
@@ -149,7 +168,9 @@ if (bodyIndex) {
   nxtImage = "..";
 }
 const wishlistMovieList = () => {
-  wishlistContainer.innerHTML = "";
+  if (wishlistContainer) {
+    wishlistContainer.innerHTML = "";
+  }
   wishlists.map((wishlist, index) => {
     let wishlistCard =
       `<div id="card" class="card">
@@ -171,14 +192,14 @@ const wishlistMovieList = () => {
        </div>
       </div>
       `;
-    wishlistContainer.innerHTML += wishlistCard;
+    if (wishlistContainer) {
+      wishlistContainer.innerHTML += wishlistCard;
+    }
   });
 };
 
-let categories = document.querySelector("#categories");
-
 let categoriesUnique = [];
-let movieByCategory = [];
+// let movieByCategory = [];
 const removeDuplicates = () => {
   movies.forEach((movie) => {
     if (!categoriesUnique.includes(movie.category)) {
@@ -225,31 +246,13 @@ const categoriesList = () => {
         })
         .join("") +
       `</div></div>`;
-    categories.innerHTML += categoryCard;
+    if (categories) {
+      categories.innerHTML += categoryCard;
+    }
   });
 };
 
-class Wishlist {
-  constructor(
-    id,
-    movieName,
-    category,
-    description,
-    published,
-    movieImage,
-    movieVideo
-  ) {
-    this.id = id;
-    this.movieName = movieName;
-    this.category = category;
-    this.description = description;
-    this.published = published;
-    this.movieImage = movieImage;
-    this.movieVideo = movieVideo;
-  }
-}
-
-const wishlistMovie = (index) => {
+window.wishlistMovie = (index) => {
   const wishlist = new Wishlist(
     movies[index].id,
     movies[index].movieName,
@@ -265,7 +268,7 @@ const wishlistMovie = (index) => {
   localStorage.setItem("wishlists", JSON.stringify(wishlists));
   wishlistMovieList();
 };
-const unwishlistMovie = (index) => {
+window.unwishlistMovie = (index) => {
   wishlists.splice(index, 1);
   localStorage.setItem("wishlists", JSON.stringify(wishlists));
   wishlistMovieList();
