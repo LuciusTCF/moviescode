@@ -7,6 +7,9 @@
 main {
   height: 78%;
 }
+.img-carousel{
+  object-fit: cover;
+}
 
 .navbar-footer-brand img {
   max-width: 200px;
@@ -393,3 +396,31 @@ body {
     width: 20%;
     }
   }ht */
+
+  /* galeria */
+  .image-gallery {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Ajusta el ancho máximo según tus preferencias */
+}
+
+.image-list {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.3s ease; /* Agrega una transición suave al desplazamiento */
+}
+
+.image-item {
+    flex: 0 0 auto;
+    margin-right: 10px; /* Espaciado entre miniaturas */
+}
+
+
+.prev-btn {
+    left: 1;
+}
+
+.next-btn {
+    right: 1;
+}

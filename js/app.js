@@ -58,9 +58,9 @@ setInterval(() => {
 
 // card sliders
 
-let cardContainers = [...document.querySelectorAll('.card-container')];
-let preBtns = [...document.querySelectorAll('.pre-btn')];
-let nxtBtns = [...document.querySelectorAll('.nxt-btn')];
+let cardContainers = document.getElementById('card-container');
+let preBtns = document.getElementById("nxt-btn")
+let nxtBtns = document.getElementById("nxt-btn")
 
 cardContainers.forEach((item, i) => {
     let containerDimensions = item.getBoundingClientRect();
@@ -74,3 +74,5 @@ cardContainers.forEach((item, i) => {
         item.scrollLeft -= containerWidth + 200;
     })
 })
+
+
