@@ -20,7 +20,13 @@ class User {
 
 const registerUser = (event) => {
   event.preventDefault();
-  if (passConfirm1.value == passConfirm2.value) {
+  if (
+    passConfirm1.value == passConfirm2.value &&
+    emailReg.value != "" &&
+    usernameReg.value != "" &&
+    passwordReg.value != "" &&
+    profileReg.value != ""
+  ) {
     const user = new User(
       emailReg.value,
       usernameReg.value,
@@ -97,3 +103,27 @@ const sendMail = () => {
     Body: "Estamos contentos de que formes parte de nuestra comunidad.",
   }).then((message = "Se ha registrado su cuenta") => alert(message));
 };
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  "use strict";
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll(".needs-validation");
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach((form) => {
+    form.addEventListener(
+      "submit",
+      (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
