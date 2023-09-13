@@ -1,5 +1,5 @@
 const movies = JSON.parse(localStorage.getItem("movies")) || null;
-const highlights = JSON.parse(localStorage.getItem("highlights")) || [];
+const highlights = JSON.parse(localStorage.getItem("highlights")) || null;
 const auth = JSON.parse(localStorage.getItem("auth")) || null;
 
 const buttonModal1 = document.querySelector("#buttonModal1");
@@ -11,6 +11,7 @@ let category = document.querySelector("#input3");
 let description = document.querySelector("#input4");
 let published = document.querySelector("#input5");
 let movieImage = document.querySelector("#input6");
+let movieVideo = document.querySelector("#input7");
 let addMovieForm = document.querySelector("#addMovieForm");
 let tBody = document.querySelector("tbody");
 let movieUpdate = document.querySelector("#movieUpdate");
@@ -18,13 +19,22 @@ let content = document.querySelector("#main");
 let button = document.querySelector("#logOut");
 
 class Movie {
-  constructor(id, movieName, category, description, published, movieImage) {
+  constructor(
+    id,
+    movieName,
+    category,
+    description,
+    published,
+    movieImage,
+    movieVideo
+  ) {
     this.id = id;
     this.movieName = movieName;
     this.category = category;
     this.description = description;
     this.published = published;
     this.movieImage = movieImage;
+    this.movieVideo = movieVideo;
   }
 }
 
@@ -36,7 +46,8 @@ const saveMovie = (event) => {
     category.value,
     description.value,
     published.value,
-    movieImage.value
+    movieImage.value,
+    movieVideo.value
   );
   movies.push(movie);
   localStorage.setItem("movies", JSON.stringify(movies));
@@ -86,6 +97,7 @@ const showModal2 = (index) => {
   document.querySelector("#inputModal4").value = movies[index].description;
   document.querySelector("#inputModal5").value = movies[index].published;
   document.querySelector("#inputModal6").value = movies[index].movieImage;
+  document.querySelector("#inputModal7").value = movies[index].movieVideo;
   movieIndex = index;
   myModal2.show();
 };
@@ -98,19 +110,29 @@ const updateMovie = (event) => {
   movies[movieIndex].description = document.querySelector("#inputModal4").value;
   movies[movieIndex].published = document.querySelector("#inputModal5").value;
   movies[movieIndex].movieImage = document.querySelector("#inputModal6").value;
+  movies[movieIndex].movieVideo = document.querySelector("#inputModal7").value;
   localStorage.setItem("movies", JSON.stringify(movies));
   myModal2.hide();
   loadTable();
 };
 
 class Highlight {
-  constructor(id, movieName, category, description, published, movieImage) {
+  constructor(
+    id,
+    movieName,
+    category,
+    description,
+    published,
+    movieImage,
+    movieVideo
+  ) {
     this.id = id;
     this.movieName = movieName;
     this.category = category;
     this.description = description;
     this.published = published;
     this.movieImage = movieImage;
+    this.movieVideo = movieVideo;
   }
 }
 
@@ -121,7 +143,8 @@ const highlightMovie = (index) => {
     movies[index].category,
     movies[index].description,
     movies[index].published,
-    movies[index].movieImage
+    movies[index].movieImage,
+    movies[index].movieVideo
   );
   highlights.splice(0);
   highlights.push(highlight);
@@ -150,10 +173,6 @@ if (movieUpdate) {
   });
 }
 
-// const auth = JSON.parse(localStorage.getItem("auth")) || null;
-// let content = document.querySelector("#main");
-// let button = document.querySelector("#logOut");
-
 if (!auth) {
   button.classList = "d-none";
   content.innerHTML = "";
@@ -173,5 +192,3 @@ const closeSession = () => {
 button.addEventListener("click", closeSession);
 
 loadTable();
-
-// export { movies, highlights, auth };

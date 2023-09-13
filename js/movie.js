@@ -1,18 +1,9 @@
-import { peliculas } from "../data/peliculas.js";
+const movies = JSON.parse(localStorage.getItem("movies"));
+const highlights = JSON.parse(localStorage.getItem("highlights"));
+const wishlists = JSON.parse(localStorage.getItem("wishlists"));
+let position = location.search.split("?v=")[1];
 
-let parametros = location.search.split("?posicion=");
-
-let posicion = parametros[1];
-
-console.log(posicion);
-
-document.querySelector("h1").innerText = peliculas[posicion].titulo;
-document.querySelector("#portada").src = peliculas[posicion].imagen;
-document.querySelector("#portada").alt = peliculas[posicion].titulo;
-document.querySelector("#sinopsis").innerText = peliculas[posicion].sinopsis;
-document.querySelector("#estreno").innerText =
-  peliculas[posicion].fecha_estreno;
-document.querySelector("#director").innerText = peliculas[posicion].director;
-document.querySelector("#recaudacion").innerText =
-  peliculas[posicion].recaudacion;
-document.querySelector("#iframe").src = peliculas[posicion].trailer;
+document.querySelector("#title").innerText = movies[position].movieName;
+document.querySelector("#description").innerText = movies[position].description;
+document.querySelector("#published").innerText = movies[position].published;
+document.querySelector("#iframe").src = movies[position].movieVideo;

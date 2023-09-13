@@ -94,5 +94,3 @@ const logIn = (event) => {
     alert("El correo o la contraseña no son correctos");
   }
 };
-
-// export { users };

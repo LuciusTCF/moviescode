@@ -104,22 +104,31 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main class="mt-5 pt-5 container-fluid d-flex justify-content-center">
       <div class="container-fluid">
-        <div class="row col-12">
-          <div class="card" style="width: 18rem; text-align: center">
-            <img src="..." class="cardImg" alt="Imagen" />
-            <div class="card-body">
-              <h5 class="cardNombre">Titulo</h5>
-              <p class="cardSinopsis">Sinopsis</p>
-            </div>
-            <div class="list-group list-group-flush">
-              <div class="cardRecaudacion">Recaudacion</div>
-              <div class="cardDirector">Director</div>
-              <div class="list-group-item">A third item</div>
-            </div>
-            <div class="card-body">
-              <a href="#" class="cardTrailer">Card link</a>
+        <div class="row">
+          <div class="col">
+            <h1 id="title"></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="d-flex row justify-content-center">
+              <iframe
+                id="iframe"
+                src=""
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+
+              <div class="mt-3">
+                <h3>Fecha de estreno</h3>
+                <p id="published"></p>
+                <h3>Sinópsis</h3>
+                <p id="description"></p>
+              </div>
             </div>
           </div>
         </div>
@@ -244,24 +253,7 @@
 
     <script src="https://use.fontawesome.com/c2813ccf5b.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="../js/movie.js" type="module"></script>
-    <script type="module" src="../js/app.js"></script>
+    <script src="../js/movie.js"></script>
+    <script src="../js/app.js"></script>
   </body>
 </html>
-
-<!--<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>-->

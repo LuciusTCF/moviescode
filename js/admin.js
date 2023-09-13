@@ -1,5 +1,3 @@
-// import { users } from "./register.js";
-
 const users = JSON.parse(localStorage.getItem("users")) || null;
 let content = document.querySelector("#main");
 let button2 = document.querySelector("#logOut");
