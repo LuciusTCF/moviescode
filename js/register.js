@@ -1,32 +1,13 @@
-// let users = JSON.parse(localStorage.getItem("users")) || [];
-// const userAdmin = {
-//   usernameAdmin: "Admin",
-//   emailAdmin: "admin@admin.com",
-//   passwordAdmin: "12345678",
-//   avatarAdmin:
-//     "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_man_people_person_profile_user_icon_123377.png",
-// };
-
 import { users, userAdmin } from "./data.js";
 import { User } from "./class.js";
 
 let emailReg = document.querySelector("#emailReg");
 let usernameReg = document.querySelector("#userReg");
 let passwordReg = document.querySelector("#passwordReg");
-// let passwordConfirm = document.querySelector("#passwordConfirm");
 let profileReg = document.querySelector("#profileReg");
 let passConfirm1 = document.querySelector("#passwordReg");
 let passConfirm2 = document.querySelector("#passwordConfirm");
 let messageConfirm2 = document.querySelector("#message");
-
-// class User {
-//   constructor(emailReg, usernameReg, passwordReg, profileReg) {
-//     this.emailReg = emailReg;
-//     this.usernameReg = usernameReg;
-//     this.passwordReg = passwordReg;
-//     this.profileReg = profileReg;
-//   }
-// }
 
 window.registerUser = (event) => {
   event.preventDefault();

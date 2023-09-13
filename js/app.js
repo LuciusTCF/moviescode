@@ -1,9 +1,3 @@
-// let users = JSON.parse(localStorage.getItem("users")) || null;
-// let movies = JSON.parse(localStorage.getItem("movies")) || null;
-// let auth = JSON.parse(localStorage.getItem("auth")) || null;
-// let highlights = JSON.parse(localStorage.getItem("highlights"));
-// let wishlists = JSON.parse(localStorage.getItem("wishlists"));
-
 import { users, movies, auth, highlights, wishlists } from "./data.js";
 import { Wishlist } from "./class.js";
 
@@ -14,26 +8,6 @@ let sectionStart = document.querySelector("#sectionStart");
 let highlightDiv = document.querySelector("#highlightDiv");
 let wishlistContainer = document.querySelector("#wishlistContainer");
 let categories = document.querySelector("#categories");
-
-// class Wishlist {
-//   constructor(
-//     id,
-//     movieName,
-//     category,
-//     description,
-//     published,
-//     movieImage,
-//     movieVideo
-//   ) {
-//     this.id = id;
-//     this.movieName = movieName;
-//     this.category = category;
-//     this.description = description;
-//     this.published = published;
-//     this.movieImage = movieImage;
-//     this.movieVideo = movieVideo;
-//   }
-// }
 
 const search = (event) => {
   event.preventDefault();
@@ -71,11 +45,9 @@ const search = (event) => {
 
 searchInput.addEventListener("keyup", search);
 
-if (auth) {
-  if (sectionStart) {
-    sectionStart.innerHTML = "";
-    sectionStart.classList = "row me-3 mb-0";
-  }
+if (auth && sectionStart) {
+  sectionStart.innerHTML = "";
+  sectionStart.classList = "row me-3 mb-0";
 
   let usernameP = document.createElement("p");
   let usernameText = `${auth.user}`;
@@ -95,20 +67,16 @@ if (auth) {
 
   hiperlink.appendChild(img);
   sectionStart.append(hiperlink);
-} else if (users) {
-  if (sectionStart) {
-    sectionStart.innerHTML = "";
-    sectionStart.classList = "row me-3 mb-0";
-  }
+} else if (users && sectionStart) {
+  sectionStart.innerHTML = "";
+  sectionStart.classList = "row me-3 mb-0";
 
   let usernameP = document.createElement("p");
   let usernameText = `${users[0].usernameReg}`;
   usernameP.classList = "text-white align-self-center mb-0 col-6";
 
   usernameP.append(usernameText);
-  if (sectionStart) {
-    sectionStart.append(usernameP);
-  }
+  sectionStart.append(usernameP);
 
   let img = document.createElement("img");
   img.src = users[0].profileReg;
@@ -120,10 +88,27 @@ if (auth) {
   hiperlink.href = "/pages/user.html";
 
   hiperlink.appendChild(img);
-  if (sectionStart) {
-    sectionStart.append(hiperlink);
-  }
-} else {
+  sectionStart.append(hiperlink);
+}
+if (auth && users) {
+  sectionStart.innerHTML = `<li
+                  class="d-flex col-5 justify-content-center nav-item mx-1 rounded-2 p-2 target"
+                >
+                  <a
+                    class="nav-link text-white text-target"
+                    href="./pages/login.html"
+                    >Loguearse</a
+                  >
+                </li>
+                <li
+                  class="d-flex col-5 justify-content-center nav-item mx-1 rounded-2 bg-white border border-light p-2 target-2"
+                >
+                  <a
+                    class="nav-link text-black text-target"
+                    href="./pages/register.html"
+                    >Registrarse</a
+                  >
+                </li>`;
 }
 
 const highlightIndex = () => {
@@ -199,7 +184,6 @@ const wishlistMovieList = () => {
 };
 
 let categoriesUnique = [];
-// let movieByCategory = [];
 const removeDuplicates = () => {
   movies.forEach((movie) => {
     if (!categoriesUnique.includes(movie.category)) {

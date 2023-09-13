@@ -1,6 +1,3 @@
-// let movies = JSON.parse(localStorage.getItem("movies")) || null;
-// let highlights = JSON.parse(localStorage.getItem("highlights")) || null;
-// let auth = JSON.parse(localStorage.getItem("auth")) || null;
 import { movies, highlights, auth } from "./data.js";
 import { Movie, Highlight } from "./class.js";
 
@@ -18,45 +15,6 @@ let tBody = document.querySelector("tbody");
 let movieUpdate = document.querySelector("#movieUpdate");
 let content = document.querySelector("#main");
 let button = document.querySelector("#logOut");
-
-// class Movie {
-//   constructor(
-//     id,
-//     movieName,
-//     category,
-//     description,
-//     published,
-//     movieImage,
-//     movieVideo
-//   ) {
-//     this.id = id;
-//     this.movieName = movieName;
-//     this.category = category;
-//     this.description = description;
-//     this.published = published;
-//     this.movieImage = movieImage;
-//     this.movieVideo = movieVideo;
-//   }
-// }
-// class Highlight {
-//   constructor(
-//     id,
-//     movieName,
-//     category,
-//     description,
-//     published,
-//     movieImage,
-//     movieVideo
-//   ) {
-//     this.id = id;
-//     this.movieName = movieName;
-//     this.category = category;
-//     this.description = description;
-//     this.published = published;
-//     this.movieImage = movieImage;
-//     this.movieVideo = movieVideo;
-//   }
-// }
 
 const saveMovie = (event) => {
   event.preventDefault();

@@ -1,4 +1,3 @@
-// let users = JSON.parse(localStorage.getItem("users"));
 import { users } from "./data.js";
 
 let content2 = document.querySelector("#main2");
@@ -22,11 +21,9 @@ const closeSession2 = () => {
 };
 
 const profileMain = () => {
-  // if (users !== null) {
   profilePageName.innerText = users[0].usernameReg;
   profilePageImg.src = users[0].profileReg;
   profilePageImg.alt = users[0].usernameReg;
-  // }
 };
 
 button2.addEventListener("click", closeSession2);
