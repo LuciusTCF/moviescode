@@ -424,3 +424,13 @@ body {
 .next-btn {
     right: 1;
 }
+
+#tarjetas .card{
+    background-color: #000000;
+    color: gainsboro;
+    transition: transform 0.2s;
+}
+
+#tarjetas .card:hover{
+    transform: scale(1.1);
+}
