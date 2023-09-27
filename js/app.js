@@ -1,4 +1,5 @@
-import { users, movies, auth, highlights, wishlists } from "./data.js";
+import { movies, auth, highlights, wishlists } from "./data.js";
+let users = JSON.parse(localStorage.getItem("users")) || null;
 import { Wishlist } from "./class.js";
 
 let searchInput = document.querySelector("#search");
@@ -8,6 +9,7 @@ let sectionStart = document.querySelector("#sectionStart");
 let highlightDiv = document.querySelector("#highlightDiv");
 let wishlistContainer = document.querySelector("#wishlistContainer");
 let categories = document.querySelector("#categories");
+let mainIndex = document.querySelector("#mainIndex");
 
 const search = (event) => {
   event.preventDefault();
@@ -44,56 +46,49 @@ const search = (event) => {
 };
 
 searchInput.addEventListener("keyup", search);
+try {
+  if (auth && sectionStart) {
+    sectionStart.innerHTML = "";
+    sectionStart.classList = "row me-3 mb-0";
 
-if (auth && sectionStart) {
-  sectionStart.innerHTML = "";
-  sectionStart.classList = "row me-3 mb-0";
+    let usernameP = document.createElement("p");
+    let usernameText = `${auth.user}`;
+    usernameP.classList = " text-white align-self-center mb-0 col-6";
 
-  let usernameP = document.createElement("p");
-  let usernameText = `${auth.user}`;
-  usernameP.classList = " text-white align-self-center mb-0 col-6";
+    usernameP.append(usernameText);
+    sectionStart.append(usernameP);
 
-  usernameP.append(usernameText);
-  sectionStart.append(usernameP);
+    let img = document.createElement("img");
+    img.src = auth.avatar;
+    img.alt = auth.user;
+    img.classList = "bg-light rounded-1 user-avatar";
 
-  let img = document.createElement("img");
-  img.src = auth.avatar;
-  img.alt = auth.user;
-  img.classList = "bg-light rounded-1 user-avatar";
+    let hiperlink = document.createElement("a");
+    hiperlink.classList = "col-6";
+    hiperlink.href = "/pages/admin.html";
 
-  let hiperlink = document.createElement("a");
-  hiperlink.classList = "col-6";
-  hiperlink.href = "/pages/admin.html";
-
-  hiperlink.appendChild(img);
-  sectionStart.append(hiperlink);
-} else if (users && sectionStart) {
-  sectionStart.innerHTML = "";
-  sectionStart.classList = "row me-3 mb-0";
-
-  let usernameP = document.createElement("p");
-  let usernameText = `${users[0].usernameReg}`;
-  usernameP.classList = "text-white align-self-center mb-0 col-6";
-
-  usernameP.append(usernameText);
-  sectionStart.append(usernameP);
-
-  let img = document.createElement("img");
-  img.src = users[0].profileReg;
-  img.alt = users[0].usernameReg;
-  img.classList = "bg-light rounded-1 user-avatar";
-
-  let hiperlink = document.createElement("a");
-  hiperlink.classList = "col-6";
-  hiperlink.href = "/pages/user.html";
-
-  hiperlink.appendChild(img);
-  sectionStart.append(hiperlink);
-}
-if (auth && users) {
-  sectionStart.innerHTML = `<li
-                  class="d-flex col-5 justify-content-center nav-item mx-1 rounded-2 p-2 target"
-                >
+    hiperlink.appendChild(img);
+    sectionStart.append(hiperlink);
+  } else if (users && sectionStart) {
+    sectionStart.innerHTML = "";
+    sectionStart.classList = "row me-3 mb-0";
+    let usernameP = document.createElement("p");
+    let usernameText = users.usernameReg;
+    usernameP.classList = "text-white align-self-center mb-0 col-6";
+    usernameP.append(usernameText);
+    sectionStart.append(usernameP);
+    let img = document.createElement("img");
+    img.src = users.profileReg;
+    img.alt = users.usernameReg;
+    img.classList = "bg-light rounded-1 user-avatar";
+    let hiperlink = document.createElement("a");
+    hiperlink.classList = "col-6";
+    hiperlink.href = "/pages/user.html";
+    hiperlink.appendChild(img);
+    sectionStart.append(hiperlink);
+  }
+} catch {
+  sectionStart.innerHTML = `<li class="d-flex col-5 justify-content-center nav-item mx-1 rounded-2 p-2 target">
                   <a
                     class="nav-link text-white text-target"
                     href="./pages/login.html"
@@ -109,6 +104,13 @@ if (auth && users) {
                     >Registrarse</a
                   >
                 </li>`;
+}
+
+if (!movies) {
+  mainIndex.innerHTML = `
+  <div>
+  <h1>No hay películas registradas</h1>
+  </div>`;
 }
 
 const highlightIndex = () => {
@@ -155,32 +157,32 @@ if (bodyIndex) {
 const wishlistMovieList = () => {
   if (wishlistContainer) {
     wishlistContainer.innerHTML = "";
-  }
-  wishlists.map((wishlist, index) => {
-    let wishlistCard =
-      `<div id="card" class="card">
+
+    wishlists.map((wishlist, index) => {
+      let wishlistCard =
+        `<div id="card" class="card">
        <img
        id="card-img"
          src="` +
-      pageImage +
-      `${wishlist.movieImage}"
+        pageImage +
+        `${wishlist.movieImage}"
          class="card-img"
          alt="${wishlist.movieName}"
        />
        <div id="card-body" class="card-body">
          <a href="` +
-      pageRedirection +
-      `${movies.findIndex(
-        (movie) => movie.id == wishlists[index].id
-      )}"><h2 class="name mt-0">${wishlist.movieName}</h2></a>
+        pageRedirection +
+        `${movies.findIndex(
+          (movie) => movie.id == wishlists[index].id
+        )}"><h2 class="name mt-0">${wishlist.movieName}</h2></a>
          <button class="watchlist-btn" onclick="unwishlistMovie(${index})">Quitar de Mi Lista</button>
        </div>
       </div>
       `;
-    if (wishlistContainer) {
+
       wishlistContainer.innerHTML += wishlistCard;
-    }
-  });
+    });
+  }
 };
 
 let categoriesUnique = [];

@@ -1,4 +1,4 @@
-import { users } from "./data.js";
+let users = JSON.parse(localStorage.getItem("users")) || null;
 
 let content2 = document.querySelector("#main2");
 let button2 = document.querySelector("#logOut2");
@@ -17,13 +17,13 @@ if (!users) {
 
 const closeSession2 = () => {
   localStorage.removeItem("users");
-  location.replace("index.html");
+  location.replace("/");
 };
 
 const profileMain = () => {
-  profilePageName.innerText = users[0].usernameReg;
-  profilePageImg.src = users[0].profileReg;
-  profilePageImg.alt = users[0].usernameReg;
+  profilePageName.innerText = users.usernameReg;
+  profilePageImg.src = users.profileReg;
+  profilePageImg.alt = users.usernameReg;
 };
 
 button2.addEventListener("click", closeSession2);
