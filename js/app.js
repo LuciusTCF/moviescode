@@ -108,11 +108,15 @@ try {
 
 if (!movies) {
   mainIndex.innerHTML = `
-  <div>
-  <h1>No hay películas registradas</h1>
+  <div class="container">
+  <div class="row">
+  <div class="col">
+  <h1 class=" mt-5 pt-5 d-flex align-items-center justify-content-center">No hay películas registradas</h1>
+  <div><p class="d-flex align-items-center justify-content-center">Si es administrador, acceda a su cuenta para añadirlas</p></div>
+  </div>
+  </div>
   </div>`;
 }
-
 const highlightIndex = () => {
   let divContent = document.createElement("div");
   divContent.classList = "slide-content";
