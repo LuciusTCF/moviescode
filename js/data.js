@@ -1,7 +1,11 @@
 let movies = JSON.parse(localStorage.getItem("movies")) || null;
 let highlights = JSON.parse(localStorage.getItem("highlights")) || null;
-let auth = JSON.parse(localStorage.getItem("auth")) || [];
-let users = JSON.parse(localStorage.getItem("users")) || [];
+let auth = JSON.parse(localStorage.getItem("auth")) || null;
+let users =
+  JSON.parse(localStorage.getItem("users")) ||
+  !location.href == "http://127.0.0.1:5502/pages/register.html"
+    ? null
+    : [];
 let wishlists = JSON.parse(localStorage.getItem("wishlists")) || null;
 const userAdmin = {
   usernameAdmin: "Admin",

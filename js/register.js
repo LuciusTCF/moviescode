@@ -1,32 +1,14 @@
-// let users = JSON.parse(localStorage.getItem("users")) || [];
-// const userAdmin = {
-//   usernameAdmin: "Admin",
-//   emailAdmin: "admin@admin.com",
-//   passwordAdmin: "12345678",
-//   avatarAdmin:
-//     "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_man_people_person_profile_user_icon_123377.png",
-// };
-
-import { users, userAdmin } from "./data.js";
+const users = JSON.parse(localStorage.getItem("users")) || [];
+import { userAdmin } from "./data.js";
 import { User } from "./class.js";
 
 let emailReg = document.querySelector("#emailReg");
 let usernameReg = document.querySelector("#userReg");
 let passwordReg = document.querySelector("#passwordReg");
-// let passwordConfirm = document.querySelector("#passwordConfirm");
 let profileReg = document.querySelector("#profileReg");
 let passConfirm1 = document.querySelector("#passwordReg");
 let passConfirm2 = document.querySelector("#passwordConfirm");
 let messageConfirm2 = document.querySelector("#message");
-
-// class User {
-//   constructor(emailReg, usernameReg, passwordReg, profileReg) {
-//     this.emailReg = emailReg;
-//     this.usernameReg = usernameReg;
-//     this.passwordReg = passwordReg;
-//     this.profileReg = profileReg;
-//   }
-// }
 
 window.registerUser = (event) => {
   event.preventDefault();
@@ -44,11 +26,9 @@ window.registerUser = (event) => {
       profileReg.value
     );
     localStorage.removeItem("auth");
-    users.splice(0);
-    users.push(user);
+    localStorage.setItem("users", JSON.stringify(user));
+    location.assign("/");
     sendMail();
-    localStorage.setItem("users", JSON.stringify(users));
-    location.assign("http://127.0.0.1:5502/index.html");
   }
 };
 
@@ -83,10 +63,7 @@ window.logIn = (event) => {
     );
 
     location.replace("/pages/admin.html");
-  } else if (
-    emailLog == users[0].emailReg &&
-    passwordLog == users[0].passwordReg
-  ) {
+  } else if (emailLog == users.emailReg && passwordLog == users.passwordReg) {
     localStorage.removeItem("auth");
     location.replace("/pages/user.html");
   } else {
@@ -94,7 +71,8 @@ window.logIn = (event) => {
   }
 };
 
-const sendMail = () => {
+const sendMail = (event) => {
+  event.preventDefault();
   Email.send({
     Host: "smtp.elasticemail.com",
     Username: "lucaschcobarferreyra@gmail.com",
@@ -103,14 +81,17 @@ const sendMail = () => {
     From: "lucaschcobarferreyra@gmail.com",
     Subject: "Gracias por registrarte",
     Body: "Estamos contentos de que formes parte de nuestra comunidad.",
-  }).then((message = "Se ha registrado su cuenta") => alert(message));
+  }).then(() => alert("Se ha registrado su cuenta"));
 };
 
+// Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
   "use strict";
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const forms = document.querySelectorAll(".needs-validation");
 
+  // Loop over them and prevent submission
   Array.from(forms).forEach((form) => {
     form.addEventListener(
       "submit",
